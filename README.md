@@ -28,7 +28,11 @@ The official documentation is hosted on Read the Docs: https://pyemoodji.readthe
 
 ## Contributors
 
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/UBC-MDS/pyemoodji/graphs/contributors).
+* Aidan Mattrick
+* Kevin Shahnazari
+* Zhanyi Su
+* Rachel Wong
+
 
 ### Credits
 
