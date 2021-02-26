@@ -23,9 +23,16 @@ def text_counter(text):
     Counts the number of characters, words and sentences of a string
 
     Args:
-        text (String):
+        text (String): A text string which could contain any number
+        of english words
 
     Returns:
-        [type]: [description]
+        [Dictionary]: A dictionary containing the number of characters,
+        words and sentences. They could be indexed by using ['characters'],
+        ['words'] and ['sentences']
+
+    example:
+        text_counter("I am very happy")
+        returns: {'characters':15,'words':4,'sentences':1}
     """
     return None
