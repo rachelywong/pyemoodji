@@ -38,11 +38,10 @@ The official documentation is hosted on Read the Docs: https://pyemoodji.readthe
 
 ## Contributors
 
-* Aidan Mattrick
-* Kevin Shahnazari
-* Zhanyi Su
-* Rachel Wong
-
+* [Aidan Mattrick](https://github.com/aidanmattrick)
+* [Kevin Shahnazari](https://github.com/kshahnazari1998)
+* [Zhanyi Su](https://github.com/YikiSu)
+* [Rachel Wong](https://github.com/rachelywong)
 
 ### Credits
 
