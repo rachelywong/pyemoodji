@@ -1,4 +1,5 @@
 # Python script for pyemoodji package
+
 def text_counter(text):
     """
     Counts the number of characters, words and sentences of a string.
