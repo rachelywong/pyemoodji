@@ -55,4 +55,10 @@ def sentiment_df(text, sentiment="all"):
         df.loc[i, "word_count"] = count_dict[i]
     df = df.reset_index().rename(columns={'index':'word'})
 
+    if sentiment == "all":
+        return df[["word", "key", "emotion_count", "emotion_percentage", "word_count"]]
+    else:
+        df = df[df["key"] == sentiment]
+        return df[["word", "key", "emotion_count", "emotion_percentage", "word_count"]]
+
     return df
