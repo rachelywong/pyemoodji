@@ -24,6 +24,22 @@ def sentiment_plot(text, sentiment = "happy", width=800, height=300):
         graph: a plot that shows the top n sentiment words of the input text file
     """
 
+    sen_list = ["all", "Happy", "Sad", "Surprise", "Fear", "Angry"]
+    
+    if not type(text) is str:
+        raise TypeError("Only strings are allowed for function input")
+    elif not type(sentiment) is str:
+        raise TypeError("Only strings are allowed for sentiment input")
+    elif not type(width) is int:
+        raise TypeError("Only integers are allowed for width input")
+    elif not type(height) is int:
+        raise TypeError("Only integers are allowed for height input")
+    elif sentiment not in sen_list:
+        raise Exception("Input not in ['all', 'Happy', 'Sad', 'Surprise', 'Fear', 'Angry']")
+    
+
+
+
     df = sentiment_df(text, sentiment = sentiment)
     df = df.sort_values(by=['emotion_percentage'], ascending=False)
     df = df[0:10]
