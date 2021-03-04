@@ -41,3 +41,11 @@ def test_textsentiment_to_emoji():
 
     with pytest.raises(Exception):
         pyemoodji.textsentiment_to_emoji(123, pd.DataFrame({"keys": ["Fear"], "words": ["hi"]}))
+
+# Tests for counter function
+def test_counter(text = "I am happy. This works."):
+    assert isinstance(pyemoodji.counter(text), pd.DataFrame), 'output should be a dataframe'
+    assert len(pyemoodji.counter(text).columns) == 3, 'output should have 3 columns'
+    assert (pyemoodji.counter(text)).loc[0, "char_count"] == 23, 'output should be 23' 
+    assert (pyemoodji.counter(text)).loc[0, "word_count"] == 5, 'output should be 5'   
+    assert (pyemoodji.counter(text)).loc[0, "sentence_count"] == 2, 'output should be 2'  

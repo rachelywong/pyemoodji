@@ -8,27 +8,39 @@ import pandas as pd
 import text2emotion as te
 from nltk.corpus import stopwords
 import altair as alt
+import re
+from nltk.tokenize import sent_tokenize
 
-def text_counter(text):
+def counter(text):
     """
-    Counts the number of characters, words and sentences of a string.
-
+    Generates a summary dataframe of the input text which contains counts for characters, words, and sentences.
+    
     Parameters:
     -----------
-        text (str): A text string which could contain any number
-        of english words
-
+        text (str): the input text for sentiment analysis
+        
     Returns:
     --------
-        [dictionary]: A dictionary containing the number of characters,
-        words and sentences. They could be indexed by using ['characters'],
-        ['words'] and ['sentences']
-
+        data frame: a data frame that contains the summary statistics for character, word, and sentence count.
+    
     example:
-        text_counter("I am very happy")
-        returns: {'characters':15,'words':4,'sentences':1}
+        text_counter("I am very happy.")
+        returns: {'characters':16,'words':4,'sentences':1}
     """
-    return None
+    num_char = 0
+    num_word = 0
+    num_sentences = 0
+    
+    for char in text:
+        num_char += 1
+    
+    num_word = len(re.findall(r'\w+', text))
+    
+    number_of_sentences = sent_tokenize(text)
+
+    num_sentences = len(number_of_sentences)
+    
+    return pd.DataFrame({"char_count": [num_char], "word_count": [num_word], "sentence_count": [num_sentences]})
   
 
 def sentiment_df(text, sentiment="all"):
