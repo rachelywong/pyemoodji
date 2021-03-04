@@ -38,11 +38,10 @@ def sentiment_df(text, sentiment="all"):
     for i in word_list:
         if i not in stop_words:
             cleaned_list.append(i)
-
-
+    
     count_dict = {}
     for i in cleaned_list:
-        count_dict[i] = cleaned_list.count(i)/len(cleaned_list)
+        count_dict[i] = cleaned_list.count(i)
 
 
     df = pd.DataFrame()
