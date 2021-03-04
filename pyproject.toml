@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "pyemoodji"
+version = "0.1.0"
+description = "Python package that does the sentiment analysis for the input text and replace emotion words with emoji"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+nltk = "^3.5"
+pandas = "^1.2.3"
+text2emotion = "^0.0.5"
+altair = "^4.1.0"
+
+[tool.poetry.dev-dependencies]
+pytest-cov = "^2.11.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
