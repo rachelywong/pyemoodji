@@ -1,6 +1,7 @@
 from pyemoodji import __version__
 from pyemoodji import pyemoodji
 import pandas as pd
+import pytest
 
 def test_version():
     assert __version__ == '0.1.0'
@@ -19,3 +20,24 @@ def test_sentiment_plot(text = "I am happy"):
     assert plot.encoding.y.field == 'word_count', 'y_axis should be mapped to the y axis'
     assert plot.encoding.color.field == 'key', 'key should be mapped to the key'
     assert plot.mark == 'bar', 'mark should be a bar'
+    
+def test_textsentiment_to_emoji():
+    assert (
+        pyemoodji.textsentiment_to_emoji(
+            "I am hi", pd.DataFrame({"key": ["Fear"], "word": ["hi"]})
+        )
+        == "\U0001F631"
+    )
+    assert (
+        pyemoodji.textsentiment_to_emoji("", pd.DataFrame({"key": ["Happy"], "word": ["hi"]}))
+        == ""
+    )
+
+    with pytest.raises(TypeError):
+        pyemoodji.textsentiment_to_emoji(123, pd.DataFrame({"key": ["Fear"], "word": ["hi"]}))
+
+    with pytest.raises(TypeError):
+        pyemoodji.textsentiment_to_emoji("I am sad", 123)
+
+    with pytest.raises(Exception):
+        pyemoodji.textsentiment_to_emoji(123, pd.DataFrame({"keys": ["Fear"], "words": ["hi"]}))
