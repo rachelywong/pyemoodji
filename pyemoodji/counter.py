@@ -18,18 +18,17 @@ def counter(text):
         text_counter("I am very happy.")
         returns: {'characters':16,'words':4,'sentences':1}
     """
-    def counter(text):
-        num_char = 0
-        num_word = 0
-        num_sentences = 0
+    num_char = 0
+    num_word = 0
+    num_sentences = 0
 
-        for char in text:
-            num_char += 1
-            
-        num_word = len(re.findall(r'\w+', text))
+    for char in text:
+        num_char += 1
 
-        number_of_sentences = sent_tokenize(text)
+    num_word = len(re.findall(r'\w+', text))
 
-        num_sentences = len(number_of_sentences)
+    number_of_sentences = sent_tokenize(text)
 
-        return pd.DataFrame({"char_count": [num_char], "word_count": [num_word], "sentence_count": [num_sentences]})
+    num_sentences = len(number_of_sentences)
+
+    return pd.DataFrame({"char_count": [num_char], "word_count": [num_word], "sentence_count": [num_sentences]})
