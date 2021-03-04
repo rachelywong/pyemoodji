@@ -1,5 +1,6 @@
 from sentiment_df import sentiment_df
 import pandas as pd
+import pytest
 
 
 def textsentiment_to_emoji(text, sentiment_dataframe=None):
@@ -68,5 +69,23 @@ def textsentiment_to_emoji(text, sentiment_dataframe=None):
 # res = textsentiment_to_emoji(
 #     "I am very happy but scared aswell. I was shocked too see mary was really angry with me though. I hope I could make her sadness go away"
 # )
-# res = textsentiment_to_emoji("I am hi", pd.DataFrame({"key": ["Fear"], "word": ["hi"]}))
-# print(res)
+def test_textsentiment_to_emoji():
+    assert (
+        textsentiment_to_emoji(
+            "I am hi", pd.DataFrame({"key": ["Fear"], "word": ["hi"]})
+        )
+        == "\U0001F631"
+    )
+    assert (
+        textsentiment_to_emoji("", pd.DataFrame({"key": ["Happy"], "word": ["hi"]}))
+        == ""
+    )
+
+    with pytest.raises(TypeError):
+        textsentiment_to_emoji(123, pd.DataFrame({"key": ["Fear"], "word": ["hi"]}))
+
+    with pytest.raises(TypeError):
+        textsentiment_to_emoji("I am sad", 123)
+
+    with pytest.raises(Exception):
+        textsentiment_to_emoji(123, pd.DataFrame({"keys": ["Fear"], "words": ["hi"]}))
