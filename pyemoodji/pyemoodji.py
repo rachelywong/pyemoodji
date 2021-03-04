@@ -103,29 +103,6 @@ def sentiment_df(text, sentiment="all"):
 
     return df
 
-  
-def textsentiment_to_emoji(text):
-    """
-    Detect the word sentiments of a text and replace the
-    with the matching emojis.
-
-    Parameters:
-    -----------
-
-        text (str): A text string containing english words
-
-    Returns:
-    --------
-        [str]: A string containing only emoji's with no words.
-            The emojis are written in the CLDR short name format.
-
-    example:
-        textsentiment_to_emoji("I am very happy")
-        returns: "\N{smiling face with smiling eyes}"
-    """
-    return None
-
-
 def sentiment_plot(text, sentiment = "Happy", n=10, width=10, height=10):
     """
     Generates a plot to show the top n sentiment words in the input text file.
