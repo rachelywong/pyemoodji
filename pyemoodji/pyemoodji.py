@@ -46,12 +46,12 @@ def counter(text):
 def sentiment_df(text, sentiment="all"):
     """
     Generates a sentiment analysis summary dataframe of the input text. The summary dataframe would include 
-    the sentiment type, sentiment words, percentage of sentiments and highest sentiment percentage.
+    the sentiment type, sentiment words, number of sentiment words, and highest sentiment percentage.
 
     Parameters:
     -----------
         text (str): the input text for sentiment analysis
-        sentiment (str, optional): the sentiment that the analysis focuses on, could be happy, positive or sad etc. Defaults to "all".
+        sentiment (str, optional): the sentiment that the analysis focuses on, could be happy, angry, or sad etc. Defaults to "all".
 
     Returns:
     --------
@@ -114,9 +114,9 @@ def sentiment_df(text, sentiment="all"):
         return df[["word", "key", "emotion_count", "emotion_percentage", "word_count"]]
 
 
-def sentiment_plot(text, sentiment = "Happy", n=10, width=10, height=10):
+def sentiment_plot(text, sentiment = "Happy", width=10, height=10):
     """
-    Generates a plot to show the top n sentiment words in the input text file.
+    Generates a plot to show the top n sentiment words in the input text file. 
 
     Parameters:
     -----------
