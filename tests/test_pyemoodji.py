@@ -13,6 +13,12 @@ def test_sentiment_df(text = "I am happy"):
     assert len(pyemoodji.sentiment_df(text).columns) == 5, 'output should have 5 columns'
     assert (pyemoodji.sentiment_df(text)).loc[0, "word_count"] == 1, 'output should be 1 (1 happy in text)'   
     assert (pyemoodji.sentiment_df(text)).set_index("word").loc["happy","emotion_count"] == 1
+    with pytest.raises(TypeError):
+        pyemoodji.sentiment_df(123)
+    with pytest.raises(TypeError):
+        pyemoodji.sentiment_df("I am happy", sentiment=123)
+    with pytest.raises(Exception):
+        pyemoodji.sentiment_df("I am happy", sentiment="happy")
 
 # Tests for sentiment analysis plot function
 def test_sentiment_plot(text = "I am happy"):

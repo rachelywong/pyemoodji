@@ -113,7 +113,6 @@ def sentiment_df(text, sentiment="all"):
         df = df[df["key"] == sentiment]
         return df[["word", "key", "emotion_count", "emotion_percentage", "word_count"]]
 
-    return df
 
 def sentiment_plot(text, sentiment = "Happy", n=10, width=10, height=10):
     """
