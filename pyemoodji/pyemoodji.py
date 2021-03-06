@@ -115,7 +115,7 @@ def sentiment_df(text, sentiment="all"):
 
     return df
 
-def sentiment_plot(text, sentiment = "Happy", n=10, width=10, height=10):
+def sentiment_plot(text, sentiment = "Happy", width=10, height=10):
     """
     Generates a plot to show the top n sentiment words in the input text file. 
 
