@@ -27,6 +27,10 @@ def counter(text):
         text_counter("I am very happy.")
         returns: {'characters':16,'words':4,'sentences':1}
     """
+    
+    if not type(text) is str:
+        raise TypeError("Only strings are allowed for function input")
+
     num_char = 0
     num_word = 0
     num_sentences = 0
@@ -116,13 +120,12 @@ def sentiment_df(text, sentiment="all"):
 
 def sentiment_plot(text, sentiment = "Happy", width=10, height=10):
     """
-    Generates a plot to show the top n sentiment words in the input text file. 
+    Generates a plot to show the top 10 sentiment words in the input text file. 
 
     Parameters:
     -----------
         text (str): the input text for sentiment analysis
         sentiment (str, optional): the sentiment that the analysis focuses on. Defaults to "happy".
-        n (int, optional): the number of sentiment words to show in the plot
         width (int, optional): the width of the output plot. Defaults to 10.
         height (int, optional): the height of the output plot. Defaults to 10.
     
