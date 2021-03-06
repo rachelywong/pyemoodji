@@ -28,6 +28,12 @@ def test_sentiment_df(text = "I am happy"):
     assert len(pyemoodji.sentiment_df(text).columns) == 5, 'output should have 5 columns'
     assert (pyemoodji.sentiment_df(text)).loc[0, "word_count"] == 1, 'output should be 1 (1 happy in text)'   
     assert (pyemoodji.sentiment_df(text)).set_index("word").loc["happy","emotion_count"] == 1
+    with pytest.raises(TypeError):
+        pyemoodji.sentiment_df(123)
+    with pytest.raises(TypeError):
+        pyemoodji.sentiment_df("I am happy", sentiment=123)
+    with pytest.raises(Exception):
+        pyemoodji.sentiment_df("I am happy", sentiment="happy")
 
 # Tests for sentiment analysis plot function
 def test_sentiment_plot(text = "I am happy"):
@@ -48,6 +54,16 @@ def test_sentiment_plot(text = "I am happy"):
     assert plot.encoding.y.shorthand == 'word_count', 'y_axis should be mapped to the y axis'
     assert plot.encoding.color.shorthand == 'key', 'key should be mapped to the key'
     assert plot.mark == 'bar', 'mark should be a bar'
+    with pytest.raises(TypeError):
+        pyemoodji.sentiment_plot(123)
+    with pytest.raises(TypeError):
+        pyemoodji.sentiment_plot("I am happy", sentiment=123)
+    with pytest.raises(TypeError):
+        pyemoodji.sentiment_plot("I am happy", sentiment="all", width="a")
+    with pytest.raises(TypeError):
+        pyemoodji.sentiment_plot("I am happy", sentiment="all", width=10, height="b")
+    with pytest.raises(Exception):
+        pyemoodji.sentiment_plot("I am happy", sentiment="happy")
     
 def test_textsentiment_to_emoji():
     """
@@ -101,3 +117,5 @@ def test_counter(text = "I am happy. This works."):
     assert (pyemoodji.counter(text)).loc[0, "char_count"] == 23, 'output should be 23' 
     assert (pyemoodji.counter(text)).loc[0, "word_count"] == 5, 'output should be 5'   
     assert (pyemoodji.counter(text)).loc[0, "sentence_count"] == 2, 'output should be 2'  
+    with pytest.raises(TypeError):
+        pyemoodji.counter(123)
