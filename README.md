@@ -28,6 +28,53 @@ Sentiment Analysis Plot:
 - While [tidytext](https://github.com/juliasilge/tidytext) (R) and [nltk](https://github.com/nltk/nltk) (Python) already exist, this package takes it a step further by providing qualitative sentiment analysis in a visually appealing format by replacing emotional words with emojis and further analyzing text data to provide more quantitative sentiment analysis.
 - We also add visualizations to further this quantitative sentiment analysis in a way that these packages do not.
 
+## Usage
+
+Here is a example of how this package could be used. Let's say there is a statement that you are trying to analyze. This is how you could implement our package.
+
+First you need to import this package with the following command: 
+
+`import pyemoodji`
+
+Let's say you have the following statement:
+
+`I was happily walking. I then saw a monster and I got scared. However, when I found out it was a prank I became angry instead.`
+
+To start you might want to first determine the number of characters, words, and sentences to ensure that your statement fits within guidelines.
+
+`pymoodji.counter('I was happily walking. I then saw a monster and I got scared. However, when I found out it was a prank I became angry instead.')`
+
+Would output a dataframe with the following values:
+
+ | char_count  | word_count    |sentence_count|
+ | ------------- | ------------- | -------------| 
+| 127          | 26            |       3       |
+
+After you have some insight into the length of your statement you would want to get a dataframe that will provide you with some statistics about the emotional content of your statement.
+
+| word  | key | emotion_count| emotion_percentage | word_count |  
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| monster  | None  | 0     | 0.000000  | 1.0 |
+| walking  | None   | 0     | 0.000000  | 1.0 |
+| instead  | Fear  | 1     | 0.166667  | 1.0  |
+| saw | None   | 0         | 0.000000  | 1.0 |
+| I  | None   | 0        | 0.000000  | 5.0  |
+| angry  | Angry  | 1  | 0.166667  | 1.0  |
+| got  | None  | 0  | 0.000000  | 1.0  |
+| However  | Surprise  | 1  | 0.166667  | 1.0  |
+| scared  | Sad  | 1| 0.166667  | 1.0  |
+| prank  | Surprise | 1 | 0.166667  | 1.0 |
+| found  | None | 0 | 0.000000  | 1.0  |
+| became  | None  | 0  | 0.000000  | 1.0 |
+| happily  | Happy  | 1  | 0.166667  | 1.0  |
+
+
+
+
+
+
+
+
 ## Documentation
 
 The official documentation is hosted on Read the Docs: https://pyemoodji.readthedocs.io/en/latest/
