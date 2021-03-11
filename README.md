@@ -68,6 +68,7 @@ After you have some insight into the length of your statement you would want to 
 | became  | None  | 0  | 0.000000  | 1.0 |
 | happily  | Happy  | 1  | 0.166667  | 1.0  |
 
+Now you might want to take this tabular / text data and turn it into a data visualization so that you can better understand the breakdown of emotions used in your statement.
 
 
 
