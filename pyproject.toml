@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyemoodji"
-version = "0.1.0"
+version = "0.1.2"
 description = "Python package that does the sentiment analysis for the input text and replace emotion words with emoji"
 authors = ["Your Name <you@example.com>"]
 license = "MIT"
