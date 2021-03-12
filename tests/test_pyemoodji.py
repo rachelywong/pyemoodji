@@ -1,14 +1,6 @@
-from pyemoodji import __version__
 from pyemoodji import pyemoodji
 import pandas as pd
 import pytest
-
-
-def test_version():
-    """
-    Test function for testing the version.
-    """
-    assert __version__ == '0.1.0'
 
 
 # Tests for sentiment analysis df function
