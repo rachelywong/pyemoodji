@@ -44,13 +44,17 @@ To start you might want to first determine the number of characters, words, and 
 
 `pymoodji.counter('I was happily walking. I then saw a monster and I got scared. However, when I found out it was a prank I became angry instead.')`
 
-Would output a dataframe with the following values:
+This would output a dataframe with the following values:
 
  | char_count  | word_count    |sentence_count|
  | ------------- | ------------- | -------------| 
 | 127          | 26            |       3       |
 
 After you have some insight into the length of your statement you would want to get a dataframe that will provide you with some statistics about the emotional content of your statement.
+
+`pyemoodji.sentiment_df(
+   "I was happily walking. I then saw a monster and I got scared. However, when I found out it was a prank I became angry instead."
+    )`
 
 | word  | key | emotion_count| emotion_percentage | word_count |  
 | ------------- | ------------- | ------------- | ------------- | ------------- |
@@ -70,8 +74,19 @@ After you have some insight into the length of your statement you would want to 
 
 Now you might want to take this tabular / text data and turn it into a data visualization so that you can better understand the breakdown of emotions used in your statement.
 
-
-
+`pyemoodji.sentiment_plot(
+        "I was happily walking. I then saw a monster and I got scared. However, when I found out it was a prank I became angry instead."
+    )`
+    
+ PLOT GOES HERE
+ 
+ Lastly, you might want to visualize the emotions in this statement in a different way. This packages allows you to see the emotional words replaced with corresponding emojis for each type of emotion.
+ 
+ `pyemoodji.textsentiment_to_emoji(
+        "I was happily walking. I then saw a monster and I got scared. However, when I found out it was a prank I became angry instead."
+    )`
+ 
+ :smiley: :cry: :open_mouth: :open_mouth: :rage: :scream:
 
 
 
