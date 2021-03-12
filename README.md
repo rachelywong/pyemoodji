@@ -75,10 +75,20 @@ After you have some insight into the length of your statement you would want to 
 Now you might want to take this tabular / text data and turn it into a data visualization so that you can better understand the breakdown of emotions used in your statement.
 
 `pyemoodji.sentiment_plot(
-        "I was happily walking. I then saw a monster and I got scared. However, when I found out it was a prank I became angry instead."
+        "I was happily walking. I then saw a monster and I got scared. However, when I found out it was a prank I became angry instead.",
+        sentiment="all"
     )`
     
- PLOT GOES HERE
+![alt text](assets/Plot_example1.png)
+    
+Also you could change the sentiment parameter to only see words with one type of sentiment 
+
+`pyemoodji.sentiment_plot(
+        "This week, show us a smile (yours or someone else's), make us smile, or both. Share a photo of something that has brought a moment of joy into your life recently, or focus on the outcome of that joy. If you're not feeling particularly cheerful at the moment — it's still 2018, after all — no need to fake your way into the challenge, either. Smiles come in all shades and flavors, including the half-hearted, tired, bitter, and resigned (to name a few). So whether the emotions you channel in your photo are full of cheer or not, I can't wait to see your take on this theme.",
+        sentiment="happy"
+    )`
+    
+![alt text](assets/Plot_example2.png)
  
  Lastly, you might want to visualize the emotions in this statement in a different way. This packages allows you to see the emotional words replaced with corresponding emojis for each type of emotion.
  
