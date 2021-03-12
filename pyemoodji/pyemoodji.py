@@ -1,10 +1,4 @@
-# Python script for pyemoodji package
-
 import nltk
-
-nltk.download("stopwords")
-from nltk.tokenize import TweetTokenizer, RegexpTokenizer
-from nltk import word_tokenize
 import pandas as pd
 import text2emotion as te
 from nltk.corpus import stopwords
@@ -12,10 +6,14 @@ import altair as alt
 import re
 from nltk.tokenize import sent_tokenize
 
+nltk.download("stopwords")
+
 
 def counter(text):
     """
-    Generates a summary dataframe of the input text which contains counts for characters, words, and sentences.
+    Generates a summary dataframe of the input
+    text which contains counts for characters,
+    words, and sentences.
 
     Parameters:
     -----------
@@ -23,7 +21,8 @@ def counter(text):
 
     Returns:
     --------
-        data frame: a data frame that contains the summary statistics for character, word, and sentence count.
+        data frame: a data frame that contains the summary
+                    statistics for character, word, and sentence count.
 
     example:
         text_counter("I am very happy.")
@@ -57,17 +56,22 @@ def counter(text):
 
 def sentiment_df(text, sentiment="all"):
     """
-    Generates a sentiment analysis summary dataframe of the input text. The summary dataframe would include
-    the sentiment type, sentiment words, number of sentiment words, and highest sentiment percentage.
+    Generates a sentiment analysis summary dataframe
+    of the input text. The summary dataframe would include
+    the sentiment type, sentiment words, number of
+    sentiment words, and highest sentiment percentage.
 
     Parameters:
     -----------
         text (str): the input text for sentiment analysis
-        sentiment (str, optional): the sentiment that the analysis focuses on, could be happy, angry, or sad etc. Defaults to "all".
+        sentiment (str, optional): the sentiment that the analysis focuses
+                                   on, could be happy, angry, or sad etc.
+                                   Defaults to "all".
 
     Returns:
     --------
-        data frame: a data frame that contains the summary of sentiment analysis
+        data frame:
+        a data frame that contains the summary of sentiment analysis
     """
 
     sen_list = ["all", "Happy", "Sad", "Surprise", "Fear", "Angry"]
@@ -120,10 +124,12 @@ def sentiment_df(text, sentiment="all"):
     df["emotion_percentage"] = df["dummy"] / total_emotion
 
     if sentiment == "all":
-        return df[["word", "key", "emotion_count", "emotion_percentage", "word_count"]]
+        return df[["word", "key", "emotion_count",
+                   "emotion_percentage", "word_count"]]
     else:
         df = df[df["key"] == sentiment]
-        return df[["word", "key", "emotion_count", "emotion_percentage", "word_count"]]
+        return df[["word", "key", "emotion_count",
+                   "emotion_percentage", "word_count"]]
 
 
 def sentiment_plot(text, sentiment="Happy", width=10, height=10):
@@ -133,13 +139,15 @@ def sentiment_plot(text, sentiment="Happy", width=10, height=10):
     Parameters:
     -----------
         text (str): the input text for sentiment analysis
-        sentiment (str, optional): the sentiment that the analysis focuses on. Defaults to "happy".
+        sentiment (str, optional): the sentiment that the analysis focuses on.
+                                   Defaults to "happy".
         width (int, optional): the width of the output plot. Defaults to 10.
         height (int, optional): the height of the output plot. Defaults to 10.
 
     Returns:
     --------
-        graph: a plot that shows the top n sentiment words of the input text file
+        graph:
+        a plot that shows the top n sentiment words of the input text file
     """
 
     sen_list = ["all", "Happy", "Sad", "Surprise", "Fear", "Angry"]
@@ -189,9 +197,10 @@ def textsentiment_to_emoji(text, sentiment_dataframe=None):
         text (str): A text string containing english words
 
         sentiment_dataframe (pandas dataframe) : A dataframe which contains
-        word and key column which shows the sentiment of each word. Only supports
-        the Happy, Sad, Suprise, Fear and Angry as keys. If no dataframe is given
-        the results of sentiment_df function would be used.
+        word and key column which shows the sentiment of each word.
+        Only supports the Happy, Sad, Suprise, Fear and Angry as keys.
+        If no dataframe is given the results of
+        sentiment_df function would be used.
 
     Returns:
     --------
@@ -211,11 +220,12 @@ def textsentiment_to_emoji(text, sentiment_dataframe=None):
     if sentiment_dataframe is None:
         sentiment_dataframe = sentiment_df(text)
 
-    # testing type to be dataframe and also to contain two columns named 'word' and 'key'
+    # testing type to be dataframe and
+    # also to contain two columns named 'word' and 'key'
     if not type(sentiment_dataframe) is pd.core.frame.DataFrame:
         raise TypeError("sentiment_dataframe must be a pandas DataFrame type")
 
-    if not "word" in sentiment_dataframe or not "key" in sentiment_dataframe:
+    if "word" not in sentiment_dataframe or "key" not in sentiment_dataframe:
         raise Exception(
             "sentiment_dataframe must have the two columns 'word' and 'key'"
         )
